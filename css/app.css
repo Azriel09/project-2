@@ -1,0 +1,12 @@
+.container {
+  background-color: #36393e;
+  color: white;
+  font-size: 2em;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width: 500px;
+  height: 500px;
+}
