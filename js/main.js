@@ -1,3 +1,14 @@
+var popularCurrencies = [
+  "PHP",
+  "USD",
+  "AUD",
+  "EUR",
+  "JPY",
+  "GBP",
+  "CAD",
+  "CNY",
+];
+
 function convertCurrency(base, to) {
   const convertFunction = () =>
     fetch(`https://api.exchangerate.host/convert?from=${base}&to=${to}`).then(
@@ -20,6 +31,7 @@ function onLoad2() {
   var toCurrency = toSelected.options[toSelected.selectedIndex].value;
 
   convertCurrency(baseCurrency, toCurrency);
+  createGraph(baseCurrency);
 }
 
 function onLoad1() {
@@ -53,6 +65,8 @@ function onLoad1() {
         option1.selected = true;
         var baseContainer = document.getElementById("base-currency");
         baseContainer.appendChild(option1);
+        var toContainer = document.getElementById("to-currency");
+        toContainer.append(option2);
         console.log(baseContainer.options[baseContainer.selectedIndex].value);
         continue;
       }
@@ -61,7 +75,7 @@ function onLoad1() {
 
       if (key == "USD") {
         option2.selected = true;
-        var container = document.getElementById("to-currency");
+        var toContainer = document.getElementById("to-currency");
         toContainer.append(option2);
         continue;
       }
@@ -82,4 +96,44 @@ function changeOption() {
   var baseCurrency = fromSelected.options[fromSelected.selectedIndex].value;
   var toCurrency = toSelected.options[toSelected.selectedIndex].value;
   convertCurrency(baseCurrency, toCurrency);
+  createGraph(baseCurrency);
 }
+
+function createGraph(base) {
+  latestRates(base);
+}
+
+function latestRates(base) {
+  const latestFunction = () =>
+    fetch(`https://api.exchangerate.host/latest?base=${base}`).then(
+      (response) => response.json()
+    );
+
+  const data = latestFunction();
+
+  data.then((currencyRates) => {
+    var rates = currencyRates["rates"];
+    var placer = 0;
+    $("td.baserate").html(`${base} 1`);
+    for (var [key, value] of Object.entries(rates)) {
+      for (i = 0; i < popularCurrencies.length; i++) {
+        if (key == popularCurrencies[i]) {
+          console.log(`Match! ${key}`);
+          $(`#rate${placer}`).html(`${key} ${value}`);
+          placer++;
+        }
+      }
+    }
+  });
+}
+
+//     for (i = 0; i < popularCurrencies.length; i++) {
+//       var table = document.getElementById("table-graph");
+//       var row = table.insertRow(i);
+//       var cell1 = row.insertCell(0);
+//       var cell2 = row.insertCell(1);
+//       cell1.innerHTML = `${base} 1`;
+//       cell2.innerHTML = popularCurrencies[i];
+//     }
+//   });
+// }

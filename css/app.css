@@ -1,12 +1,28 @@
-.container {
+.form {
   background-color: #36393e;
   color: white;
   font-size: 2em;
   position: absolute;
-  top: 40%;
+  top: 10%;
   left: 40%;
   margin-top: -50px;
   margin-left: -50px;
   width: 500px;
-  height: 500px;
+  height: 200px;
+}
+
+.graph {
+  margin-top: 5px;
+  width: 500px;
+  height: 400px;
+  background-color: #36393e;
+  position: absolute;
+  top: 30%;
+  left: 37.35%;
+}
+
+#table-graph {
+  font-size: 2em;
+  color: white;
+  width: 500px;
 }
