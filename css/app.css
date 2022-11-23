@@ -11,17 +11,28 @@
   height: 200px;
 }
 
-.graph {
+.table1 {
   margin-top: 5px;
   width: 500px;
   height: 400px;
   background-color: #36393e;
   position: absolute;
   top: 30%;
-  left: 37.35%;
+  left: 20%;
 }
 
-#table-graph {
+.table2 {
+  margin-top: 5px;
+  width: 500px;
+  height: 400px;
+  background-color: #36393e;
+  position: absolute;
+  top: 30%;
+  right: 20%;
+}
+
+#table-data1,
+#table-data2 {
   font-size: 2em;
   color: white;
   width: 500px;
