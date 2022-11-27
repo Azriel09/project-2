@@ -1,4 +1,59 @@
-.container {
+/* nav */
+
+@media (min-width: 992px) {
+  #intro {
+    margin-top: -58.59px;
+  }
+}
+
+@media (min-width: 992px) {
+.navbar-brand { display: inline-block; }
+.navbar-brand-short { display: none; }
+}
+@media (max-width: 992px) {
+.navbar-brand-short { display: inline-block; }
+.navbar-brand { display: none; }
+}
+
+.navbar-brand{
+  font-family: 'Chivo', sans-serif !important;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 5px;
+  padding-top: 10px;
+  text-shadow: 2px 2px rgba(199, 184, 184, 0.35);
+}
+
+.navbar-brand-short{
+font-family: 'Chivo', sans-serif !important;
+font-size: 30px;
+font-weight: 100;
+text-decoration: none ;
+color: aliceblue;
+text-shadow: 2px 2px rgba(199, 184, 184, 0.35);
+}
+
+.nav-item {
+font-family: 'Chivo', sans-serif;
+font-weight: 100;
+padding: 3px;
+padding-right: 10px;
+}
+
+.nav-link:hover {
+background-color:hsla(79, 6%, 49%, 0.3);
+}
+nav{
+transition: 200ms ease-in-out background-color,
+            100ms ease-in-out bos-shadow;
+padding-top: 10px !important;
+padding-bottom: 10px !important;
+background-color: rgb(6, 6, 133);
+}
+
+
+
+.main {
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
