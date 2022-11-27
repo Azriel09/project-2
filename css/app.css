@@ -1,4 +1,37 @@
-.container {
+/* nav */
+
+@media (min-width: 992px) {
+  #intro {
+    margin-top: -58.59px;
+  }
+}
+
+.nav-item {
+font-family: 'Chivo', sans-serif;
+font-weight: 100;
+padding-right: 10px;
+
+}
+.nav-link{
+  color: white !important;
+}
+.nav-link:hover {
+background-color:rgba(255, 255, 255, 0.897);
+color: black !important;
+}
+nav{ 
+background-color: rgb(22, 22, 169);
+}
+img{
+  width: 50%;
+  height: 50%;
+}
+
+
+
+
+/* main */
+.main {
   margin-top: 10vh;
   display: flex;
   align-items: center;
