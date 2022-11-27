@@ -14,6 +14,7 @@ nav h1 {
 }
 
 .table {
+  color: black;
   font-size: 2em;
 }
 
@@ -98,7 +99,7 @@ label:hover {
 
 #check1:checked ~ .container .sub-container .converter {
   opacity: 1;
-  transform: scale(2);
+  transform: scale(1);
   position: relative;
   transition: 0.5s;
 }
@@ -111,7 +112,7 @@ label:hover {
 }
 
 #check2:checked ~ .container .sub-container .timeseries {
-  transform: scale(2);
+  transform: scale(1);
   opacity: 1;
   transition: 0.3s;
 }
@@ -125,7 +126,7 @@ label:hover {
 }
 
 #check3:checked ~ .container .sub-container .table {
-  transform: scale(2);
+  transform: scale(1);
   opacity: 1;
   position: absolute;
   transition: 0.3s;
