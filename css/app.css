@@ -21,6 +21,18 @@ background-color:rgba(255, 255, 255, 0.4);
 border-radius: 10px;
 }
 
+.navbar-expand-lg{
+  display: flex!important;
+  justify-content: space-around;
+  flex-basis: auto;
+  }
+nav{ 
+background-color: rgb(21, 21, 123);
+}
+img{
+  width: 50%;
+  height: 50%;
+
 nav{ 
 background-color: rgb(21, 21, 123);
 }
@@ -33,11 +45,15 @@ img{
 
 
 /* main */
+
+/* main */
 .main {
   margin-top: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px lightgray;
   border-radius: 5px;
   box-shadow: 3px 3px 5px lightgray;
 }
