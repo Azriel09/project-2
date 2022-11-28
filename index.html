@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <link rel="stylesheet" href="./css/app.css" />
     <!-- CSS only -->
     <link
@@ -12,6 +15,10 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;1,300&display=swap"
+    rel="stylesheet"
+  />
 
     <!-- JQUERY -->
     <script
@@ -19,21 +26,14 @@
       integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
       crossorigin="anonymous"
     ></script>
-
-    <!-- PLOTLY CDN -->
-    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-
-    <title>Project 2</title>
   </head>
   <body onload="onLoad()">
+
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
-        <a href="#intro" class="navbar-brand">BRENWORKS</a>
-        <a href="#intro" class="navbar-brand-short"
-          ><span class="b">B</span><span class="w">W</span></a
-        >
+          <a href=""><img src="assets/img/logo.png" alt=""></a>
+        </class>
         <button
           class="navbar-toggler"
           type="button"
@@ -43,15 +43,18 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
-          <ul class="nav navbar-nav ms-auto">
+          <ul class="nav navbar ms-auto">
             <li class="nav-item">
-              <a href="#gallery" class="nav-link">Portfolio</a>
+              <a href="#gallery" class="nav-link">News</a>
             </li>
             <li class="nav-item">
-              <a href="#about" class="nav-link">About</a>
+              <a href="#about" class="nav-link">About us</a>
             </li>
             <li class="nav-item">
-              <a href="./contact.html#contact" class="nav-link">Contact</a>
+              <a href="./contact.html#contact" class="nav-link">Tools</a>
+            </li>
+            <li class="nav-item">
+              <a href="./contact.html#contact" class="nav-link">Data Source</a>
             </li>
           </ul>
         </div>
@@ -70,87 +73,128 @@
           ></select
           ><br />
 
-          <label for="to-currency">To</label>
-          <select name="to-currency" id="to-currency" class="currency"></select>
-          <button type="button" id="convert">Convert</button>
-        </form>
-        <div class="value-here"></div>
-      </div>
-      <div class="table1">
-        <table border="1" id="table-data1">
-          <tr>
-            <td class="baserate"></td>
-            <td id="rate0"></td>
-          </tr>
-          <tr>
-            <td class="baserate"></td>
-            <td id="rate1"></td>
-          </tr>
-          <tr>
-            <td class="baserate"></td>
-            <td id="rate2"></td>
-          </tr>
-          <tr>
-            <td class="baserate"></td>
-            <td id="rate3"></td>
-          </tr>
-          <tr>
-            <td class="baserate"></td>
-            <td id="rate4"></td>
-          </tr>
-          <tr>
-            <td class="baserate"></td>
-            <td id="rate5"></td>
-          </tr>
-          <tr>
-            <td class="baserate"></td>
-            <td id="rate6"></td>
-          </tr>
-          <tr>
-            <td class="baserate"></td>
-            <td id="rate7"></td>
-          </tr>
-        </table>
-      </div>
-      <div class="table2">
-        <table border="1" id="table-data2">
-          <tr>
-            <td id="t2rate1"></td>
-            <td class="baserate2"></td>
-          </tr>
-          <tr>
-            <td id="t2rate10"></td>
-            <td class="baserate2"></td>
-          </tr>
-          <tr>
-            <td id="t2rate50"></td>
-            <td class="baserate2"></td>
-          </tr>
-          <tr>
-            <td id="t2rate100"></td>
-            <td class="baserate2"></td>
-          </tr>
-          <tr>
-            <td id="t2rate200"></td>
-            <td class="baserate2"></td>
-          </tr>
-          <tr>
-            <td id="t2rate500"></td>
-            <td class="baserate2"></td>
-          </tr>
-          <tr>
-            <td id="t2rate1000"></td>
-            <td class="baserate2"></td>
-          </tr>
-          <tr>
-            <td id="t2rate10000"></td>
-            <td class="baserate2"></td>
-          </tr>
-        </table>
-      </div>
-      <div id="graph" class="timeseries"></div>
-    </div>
+              <label for="to-currency">To</label>
+              <select
+                name="to-currency"
+                id="to-currency"
+                class="currency"
+              ></select>
+              <button type="button" id="convert">Convert</button>
+            </form>
+            <div class="value-here"></div>
+          </div>
+        </div>
+        <div class="sub timeseries">
+          <form action="">
+            <label for="base-currency1">From</label>
+            <select
+              name="base-currency1"
+              id="base-currency1"
+              class="currency1"
+            ></select
+            ><br />
 
+            <label for="to-currency1">To</label>
+            <select
+              name="to-currency1"
+              id="to-currency1"
+              class="currency1"
+            ></select>
+          </form>
+          <div id="graph"></div>
+        </div>
+        <div class="sub table">
+          <form action="">
+            <label for="base-currency2">From</label>
+            <select
+              name="base-currency2"
+              id="base-currency2"
+              class="currency"
+            ></select
+            ><br />
+
+            <label for="to-currency1">To</label>
+            <select
+              name="to-currency2"
+              id="to-currency2"
+              class="currency"
+            ></select>
+          </form>
+          <div class="table1">
+            <table border="1" id="table-data1">
+              <tr>
+                <td class="baserate"></td>
+                <td id="rate0"></td>
+              </tr>
+              <tr>
+                <td class="baserate"></td>
+                <td id="rate1"></td>
+              </tr>
+              <tr>
+                <td class="baserate"></td>
+                <td id="rate2"></td>
+              </tr>
+              <tr>
+                <td class="baserate"></td>
+                <td id="rate3"></td>
+              </tr>
+              <tr>
+                <td class="baserate"></td>
+                <td id="rate4"></td>
+              </tr>
+              <tr>
+                <td class="baserate"></td>
+                <td id="rate5"></td>
+              </tr>
+              <tr>
+                <td class="baserate"></td>
+                <td id="rate6"></td>
+              </tr>
+              <tr>
+                <td class="baserate"></td>
+                <td id="rate7"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="table2">
+            <table border="1" id="table-data2">
+              <tr>
+                <td id="t2rate1"></td>
+                <td class="baserate2"></td>
+              </tr>
+              <tr>
+                <td id="t2rate10"></td>
+                <td class="baserate2"></td>
+              </tr>
+              <tr>
+                <td id="t2rate50"></td>
+                <td class="baserate2"></td>
+              </tr>
+              <tr>
+                <td id="t2rate100"></td>
+                <td class="baserate2"></td>
+              </tr>
+              <tr>
+                <td id="t2rate200"></td>
+                <td class="baserate2"></td>
+              </tr>
+              <tr>
+                <td id="t2rate500"></td>
+                <td class="baserate2"></td>
+              </tr>
+              <tr>
+                <td id="t2rate1000"></td>
+                <td class="baserate2"></td>
+              </tr>
+              <tr>
+                <td id="t2rate10000"></td>
+                <td class="baserate2"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="./js/classes.js"></script>
     <script src="./js/main.js"></script>
   </body>
