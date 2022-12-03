@@ -1,5 +1,29 @@
 let converter = new Currency();
 
+function check() {
+  if (document.getElementById("check2").checked == true) {
+    window.location.reload();
+  }
+}
+
+// Loading Animation
+const loader = document.querySelector("#loading");
+const subCon = document.querySelector(".sub-container");
+
+function displayLoading() {
+  loader.classList.add("display");
+  subCon.classList.remove("display");
+
+  setTimeout(() => {
+    loader.classList.remove("display");
+    subCon.classList.add("display");
+  }, 1000);
+}
+
+function hideLoading() {
+  loader.classList.remove("display");
+}
+
 function timeSeriesChart(
   base,
   to,
@@ -50,7 +74,7 @@ function timeSeriesChart(
         name: "History",
         x: dates,
         y: rates,
-        line: { color: "#17BECF" },
+        line: { color: "#006fe8;" },
       };
 
       var data = [trace1];
@@ -118,6 +142,7 @@ function timeSeriesChart(
 
 function onLoad() {
   // GETTING FROM API ALL COUNTRIES' SYMBOLS (Ex: USD, PHP, etc)
+  displayLoading();
   var requestURL = "https://api.exchangerate.host/symbols";
   var request = new XMLHttpRequest();
   request.open("GET", requestURL);
@@ -131,61 +156,87 @@ function onLoad() {
     for (var [key, value] of Object.entries(response["symbols"])) {
       var description = value["description"];
 
-      var baseContainer = document.getElementById("base-currency");
-      var baseContainer1 = document.getElementById("base-currency1");
-      var baseContainer2 = document.getElementById("base-currency2");
-      var toContainer = document.getElementById("to-currency");
-      var toContainer1 = document.getElementById("to-currency1");
-      var toContainer2 = document.getElementById("to-currency2");
+      var baseContainer1 = document.getElementById("base-currency");
+      var baseContainer2 = document.getElementById("base-currency1");
+      var baseContainer3 = document.getElementById("base-currency2");
+      var toContainer1 = document.getElementById("to-currency");
+      var toContainer2 = document.getElementById("to-currency1");
+      var toContainer3 = document.getElementById("to-currency2");
 
-      var option1 = document.createElement("option");
-      var option2 = document.createElement("option");
-      option1.classList.add("currency-option");
-      option1.innerHTML = `${key} - ${description}`;
-      option1.value = key;
-      option2.classList.add("currency-option");
-      option2.innerHTML = `${key} - ${description}`;
-      option2.value = key;
+      var option11 = document.createElement("option");
+      var option21 = document.createElement("option");
+      var option12 = document.createElement("option");
+      var option22 = document.createElement("option");
+      var option13 = document.createElement("option");
+      var option23 = document.createElement("option");
+
+      // For Converter options
+      option11.classList.add("currency-option");
+      option11.innerHTML = `${key} - ${description}`;
+      option11.value = key;
+      option21.classList.add("currency-option");
+      option21.innerHTML = `${key} - ${description}`;
+      option21.value = key;
+
+      // For Graph options
+      option12.classList.add("currency-option");
+      option12.innerHTML = `${key} - ${description}`;
+      option12.value = key;
+      option22.classList.add("currency-option");
+      option22.innerHTML = `${key} - ${description}`;
+      option22.value = key;
+
+      // For Table Options
+      option13.classList.add("currency-option");
+      option13.innerHTML = `${key} - ${description}`;
+      option13.value = key;
+      option23.classList.add("currency-option");
+      option23.innerHTML = `${key} - ${description}`;
+      option23.value = key;
 
       // Making the PHP selected by default in the first option
       if (key == "PHP") {
-        option1.selected = true;
-        var baseContainer = document.getElementById("base-currency");
-        var baseContainer1 = document.getElementById("base-currency1");
-        var baseContainer2 = document.getElementById("base-currency2");
-        var toContainer = document.getElementById("to-currency");
-        var toContainer1 = document.getElementById("to-currency1");
-        var toContainer2 = document.getElementById("to-currency2");
-        baseContainer.appendChild(option1);
-        baseContainer1.appendChild(option1.cloneNode(true));
-        baseContainer2.appendChild(option1.cloneNode(true));
-        toContainer.append(option2);
-        toContainer1.append(option2.cloneNode(true));
-        toContainer2.append(option2.cloneNode(true));
+        option11.selected = true;
+        option12.selected = true;
+        option13.selected = true;
+        var baseContainer1 = document.getElementById("base-currency");
+        var baseContainer2 = document.getElementById("base-currency1");
+        var baseContainer3 = document.getElementById("base-currency2");
+        var toContainer1 = document.getElementById("to-currency");
+        var toContainer2 = document.getElementById("to-currency1");
+        var toContainer3 = document.getElementById("to-currency2");
+        baseContainer1.appendChild(option11);
+        baseContainer2.appendChild(option12);
+        baseContainer3.appendChild(option13);
+        toContainer1.append(option21);
+        toContainer2.append(option22);
+        toContainer3.append(option23);
         continue;
       }
 
-      baseContainer.appendChild(option1.cloneNode(true));
-      baseContainer1.appendChild(option1.cloneNode(true));
-      baseContainer2.appendChild(option1);
+      baseContainer1.appendChild(option11);
+      baseContainer2.appendChild(option12);
+      baseContainer3.appendChild(option13);
 
       // Making the USD selected by default in the second option
       if (key == "USD") {
-        option2.selected = true;
-        var baseContainer = document.getElementById("base-currency");
-        var baseContainer1 = document.getElementById("base-currency1");
-        var baseContainer2 = document.getElementById("base-currency2");
-        var toContainer = document.getElementById("to-currency");
-        var toContainer1 = document.getElementById("to-currency1");
-        var toContainer2 = document.getElementById("to-currency2");
-        toContainer.append(option2);
-        toContainer1.append(option2.cloneNode(true));
-        toContainer2.append(option2.cloneNode(true));
+        option21.selected = true;
+        option22.selected = true;
+        option23.selected = true;
+        var baseContainer1 = document.getElementById("base-currency");
+        var baseContainer2 = document.getElementById("base-currency1");
+        var baseContainer3 = document.getElementById("base-currency2");
+        var toContainer1 = document.getElementById("to-currency");
+        var toContainer2 = document.getElementById("to-currency1");
+        var toContainer3 = document.getElementById("to-currency2");
+        toContainer1.append(option21);
+        toContainer2.append(option22);
+        toContainer3.append(option23);
         continue;
       }
-      toContainer.appendChild(option2);
-      toContainer1.appendChild(option2.cloneNode(true));
-      toContainer2.appendChild(option2.cloneNode(true));
+      toContainer1.appendChild(option21);
+      toContainer2.appendChild(option22);
+      toContainer3.appendChild(option23);
     }
 
     // Creating a table

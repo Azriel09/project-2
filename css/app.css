@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
 /* nav */
 
 @media (min-width: 992px) {
@@ -7,53 +14,96 @@
 }
 
 .nav-item {
-font-family: 'Chivo', sans-serif;
-font-weight: 100;
-padding-right: 10px;
-
+  font-family: "Chivo", sans-serif;
+  font-weight: 100;
+  padding-right: 10px;
 }
-.nav-link{
+.nav-link {
   color: white !important;
 }
 .nav-link:hover {
-background-color:rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.4);
 
-border-radius: 10px;
+  border-radius: 10px;
 }
 
-.navbar-expand-lg{
-  display: flex!important;
+.navbar-expand-lg {
+  display: flex !important;
   justify-content: space-around;
   flex-basis: auto;
-  }
-nav{ 
-background-color: rgb(21, 21, 123);
 }
-img{
-  width: 50%;
-  height: 50%;
-
-nav{ 
-background-color: rgb(21, 21, 123);
+nav {
+  background-color: rgb(21, 21, 123);
 }
-img{
+img {
   width: 50%;
   height: 50%;
 }
 
+nav {
+  background-color: rgb(21, 21, 123);
+}
 
-
-
-/* main */
+img {
+  width: 50%;
+  height: 50%;
+}
 
 /* main */
 .main {
+  width: 100%;
+  text-align: center;
   margin-top: 10vh;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.table {
+  color: black;
+  font-size: 2em;
+}
+
+#currency-h1 {
+  font-weight: normal;
+  font-size: 35px;
+  position: relative;
+  margin: 40px 0;
+}
+
+#currency-h1::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 3px;
+  background-color: #006fe8;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    width: 100px;
+  }
+  50% {
+    width: 200px;
+  }
+  100% {
+    width: 100px;
+  }
+}
+
+.top-content {
+  background-color: #f0f5fa;
+  width: 90%;
+  margin: 0 auto 20px auto;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
-  box-shadow: 3px 3px 5px lightgray;
   border-radius: 5px;
   box-shadow: 3px 3px 5px lightgray;
 }
@@ -76,57 +126,88 @@ label {
 }
 
 label:hover {
-  color: black;
+  color: gray;
 }
 
 .sub-container {
   width: 100%;
   margin: auto;
+  visibility: hidden;
 }
 
-.sub {
-  height: 60vh;
-  transition: 0.3s;
+#graph {
+  margin-top: 10vh;
 }
 
-#check1:checked ~ .container .sub-container .converter {
+#check1:checked ~ .main .sub-container .converter {
   opacity: 1;
-  transform: scale(1);
   position: relative;
-  transition: 0.5s;
 }
 
-#check1:checked ~ .container .sub-container .timeseries,
-#check1:checked ~ .container .sub-container .table {
-  transform: scale(0);
+#check1:checked ~ .main .top-content #label1 {
+  color: #006fe8;
+}
+
+#check1:checked ~ .main .sub-container .timeseries,
+#check1:checked ~ .main .sub-container .table {
   opacity: 0;
   position: absolute;
 }
 
-#check2:checked ~ .container .sub-container .timeseries {
-  transform: scale(1);
+#check2:checked ~ .main .sub-container .timeseries {
   opacity: 1;
-  transition: 0.3s;
+  position: relative;
+}
+#check2:checked ~ .main .top-content #label2 {
+  color: #006fe8;
 }
 
-#check2:checked ~ .container .sub-container .table,
-#check2:checked ~ .container .sub-container .converter {
-  transform: scale(0);
+#check2:checked ~ .main .sub-container .table,
+#check2:checked ~ .main .sub-container .converter {
   opacity: 0;
   position: absolute;
-  transition: 0.3s;
 }
 
-#check3:checked ~ .container .sub-container .table {
-  transform: scale(1);
+#check3:checked ~ .main .sub-container .table {
   opacity: 1;
-  position: absolute;
-  transition: 0.3s;
+  position: relative;
 }
 
-#check3:checked ~ .container .sub-container .timeseries,
-#check3:checked ~ .container .sub-container .converter {
-  transform: scale(0);
+#check3:checked ~ .main .top-content #label3 {
+  color: #006fe8;
+}
+
+#check3:checked ~ .main .sub-container .timeseries,
+#check3:checked ~ .main .sub-container .converter {
   opacity: 0;
   position: absolute;
+}
+
+/* LOADING ANIMATION */
+#loading {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #006fe8;
+  border-radius: 100%;
+  margin: auto;
+  visibility: hidden;
+  animation: spin 1s infinite linear;
+}
+
+#loading.display {
+  visibility: visible;
+}
+
+.sub-container.display {
+  visibility: visible;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
