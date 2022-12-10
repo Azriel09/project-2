@@ -1,11 +1,5 @@
 let converter = new Currency();
 
-function check() {
-  if (document.getElementById("check2").checked == true) {
-    window.location.reload();
-  }
-}
-
 // Loading Animation
 const loader = document.querySelector("#loading");
 const subCon = document.querySelector(".sub-container");
@@ -17,7 +11,7 @@ function displayLoading() {
   setTimeout(() => {
     loader.classList.remove("display");
     subCon.classList.add("display");
-  }, 1000);
+  }, 500);
 }
 
 function hideLoading() {
@@ -81,7 +75,6 @@ function timeSeriesChart(
 
       // Chart Layout
       var layout = {
-        showlegend: true,
         hovermode: "x",
         title: `${base} to ${to} History Graph`,
         xaxis: {
@@ -135,9 +128,89 @@ function timeSeriesChart(
       Plotly.newPlot("graph", data, layout, {
         responsive: true,
         scrollZoom: true,
+        displayModeBar: true,
       });
     };
   };
+}
+
+function swapOptionsConverter() {
+  var co = $(".from-select-currency1").val();
+  $(".from-select-currency1").val($(".to-select-currency1").val());
+  $(".to-select-currency1").val(co);
+}
+
+function swapOptionsTimeSeries() {
+  var co = $(".from-select-currency2").val();
+  $(".from-select-currency2").val($(".to-select-currency2").val());
+  $(".to-select-currency2").val(co);
+}
+
+function swapOptionsTable() {
+  var co = $(".from-select-currency3").val();
+  $(".from-select-currency3").val($(".to-select-currency3").val());
+  $(".to-select-currency3").val(co);
+}
+
+function createTable() {
+  var fromSelected = document.getElementById("base-currency2");
+  var toSelected = document.getElementById("to-currency2");
+  var base = fromSelected.options[fromSelected.selectedIndex].value;
+  var to = toSelected.options[toSelected.selectedIndex].value;
+  converter.createTable1(base);
+  converter.createTable2(base, to);
+}
+
+function createTimeSeriesChart() {
+  var fromSelected1 = document.getElementById("base-currency1");
+  var toSelected1 = document.getElementById("to-currency1");
+  var base1 = fromSelected1.options[fromSelected1.selectedIndex].value;
+  var to1 = toSelected1.options[toSelected1.selectedIndex].value;
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, "0");
+  var mm = String(today.getMonth() + 1).padStart(2, "0");
+  var yyyy = today.getFullYear();
+  var dd2 = dd;
+  var mm2 = mm;
+  if (dd2 == 01) {
+    switch (mm2) {
+      case "01":
+      case "02":
+      case "04":
+      case "06":
+      case "08":
+      case "09":
+      case "11":
+      case "12":
+        mm2--;
+        dd2 = 31;
+        break;
+      case "03":
+        if (yyyy % 400 == 0 || (yyyy % 4 == 0 && yyyy % 100 != 0)) {
+          mm2--;
+          dd2 = 29;
+          break;
+        }
+      case "05":
+      case "07":
+      case "10":
+        mm2--;
+        dd2 = 30;
+        break;
+    }
+  }
+  var currentDate = `${yyyy}-${mm}-${dd}`;
+  var twoYearEnd = `${yyyy - 1}-${mm2}-${dd2}`;
+  var oneYearStart = `${yyyy - 1}-${mm}-${dd}`;
+  var twoYearStart = `${yyyy - 2}-${mm}-${dd}`;
+  timeSeriesChart(
+    base1,
+    to1,
+    currentDate,
+    oneYearStart,
+    twoYearEnd,
+    twoYearStart
+  );
 }
 
 function onLoad() {
@@ -240,63 +313,33 @@ function onLoad() {
     }
 
     // Creating a table
-    var fromSelected = document.getElementById("base-currency2");
-    var toSelected = document.getElementById("to-currency2");
-    var base = fromSelected.options[fromSelected.selectedIndex].value;
-    var to = toSelected.options[toSelected.selectedIndex].value;
-    converter.createTable1(base);
-    converter.createTable2(base, to);
+    createTable();
 
     // Creating a chart
-    var fromSelected1 = document.getElementById("base-currency1");
-    var toSelected1 = document.getElementById("to-currency1");
-    var base1 = fromSelected1.options[fromSelected1.selectedIndex].value;
-    var to1 = toSelected1.options[toSelected1.selectedIndex].value;
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, "0");
-    var mm = String(today.getMonth() + 1).padStart(2, "0");
-    var yyyy = today.getFullYear();
-    var dd2 = dd;
-    var mm2 = mm;
-    if (dd2 == 01) {
-      switch (mm2) {
-        case "01":
-        case "02":
-        case "04":
-        case "06":
-        case "08":
-        case "09":
-        case "11":
-        case "12":
-          mm2--;
-          dd2 = 31;
-          break;
-        case "03":
-          if (yyyy % 400 == 0 || (yyyy % 4 == 0 && yyyy % 100 != 0)) {
-            mm2--;
-            dd2 = 29;
-            break;
-          }
-        case "05":
-        case "07":
-        case "10":
-          mm2--;
-          dd2 = 30;
-          break;
-      }
-    }
-    var currentDate = `${yyyy}-${mm}-${dd}`;
-    var twoYearEnd = `${yyyy - 1}-${mm2}-${dd2}`;
-    var oneYearStart = `${yyyy - 1}-${mm}-${dd}`;
-    var twoYearStart = `${yyyy - 2}-${mm}-${dd}`;
-    timeSeriesChart(
-      base1,
-      to1,
-      currentDate,
-      oneYearStart,
-      twoYearEnd,
-      twoYearStart
-    );
+    createTimeSeriesChart();
+
+    // SWAP BUTTON FOR CONVERTER
+    $(document).ready(function () {
+      $(".swap-button1").on("click", function (ev) {
+        swapOptionsConverter();
+      });
+    });
+
+    // SWAP BUTTON FOR TIME-SERIES
+    $(document).ready(function () {
+      $(".swap-button2").on("click", function (ev) {
+        swapOptionsTimeSeries();
+        createTimeSeriesChart();
+      });
+    });
+
+    // SWAP BUTTON FOR TABLE
+    $(document).ready(function () {
+      $(".swap-button3").on("click", function (ev) {
+        swapOptionsTable();
+        createTable();
+      });
+    });
 
     // Convert amount function
     document.getElementById("convert").onclick = (base, to) => {
@@ -435,5 +478,7 @@ function onLoad() {
       var to = toSelected.options[toSelected.selectedIndex].value;
       converter.changedOption(base, to);
     };
+
+    // Swap options button
   };
 }
