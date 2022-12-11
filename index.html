@@ -33,11 +33,14 @@
     ></script>
   </head>
   <body onload="onLoad()">
-    <!--Navbar-->
+ 
+
+    <div class="main-container">
+
+         <!--Navbar-->
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top ">
       <div class="container">
-          <a href=""><img src="assets/logo.png"></a>
-        </class>
+          <a href=""><img src="assets/logo.png" id="nav-logo"></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -58,23 +61,24 @@
               <a href="index.html" class="nav-link">Tools</a>
             </li>
             <li class="nav-item">
-              <a href="./contact.html#contact" class="nav-link">Data Source</a>
+              <a href="./contact.html#contact" class="nav-link">Resources</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-
-    
-    <img src="./assets/img/blue-background.png" alt="gg" class="bg-image" />
+    <!-- <div class="banner-img">
+    <img src="./assets/img/blue-background.png" alt="gg" class="bg-image" /></div> -->
 
     <input type="radio" name="currency" id="check1" checked />
     <input type="radio" name="currency" id="check2" />
     <input type="radio" name="currency" id="check3" />
+  
 
     <!-- MAIN -->
     <div class="main">
+
       <div class="intro-header">
         <div class="intro-top">The World's #1 Currency Exchange Site</div>
         <div class="intro-bottom">
@@ -88,10 +92,10 @@
           <label for="check1" id="label1" onclick="displayLoading()"
             >Converter</label
           >
-          <label for="check2" id="label2" onclick="displayLoading()"
+          <label for="check2" id="label2"
             >Chart</label
           >
-          <label for="check3" id="label3" onclick="displayLoading()"
+          <label for="check3" id="label3"
             >Table</label
           >
         </div>
@@ -293,9 +297,7 @@
         </div>
       </div>
     </div>
-    <script src="./js/classes.js"></script>
-    <script src="./js/main.js"></script>
-
+   
 
 
     <!-- FOOTER -->
@@ -303,21 +305,21 @@
       <div class="logo-div">
         <img src="./assets/img/logo.png" alt="" class="footer-logo" />
       </div>
-      <div class="quick-links"><h4>Quick Links</h4></div>
-      <div class="subscribe"><h3>Subscribe</h3></div>
+      <div class="quick-links"><h3>Quick Links</h3></div>
+      <div class="subscribe"><h3>Subscribe to Newsletter</h3></div>
       <div class="contacts">
         <h2>+1-7635-547-12-97</h2>
         <p>ryoexcc@gmail.com</p>
       </div>
       <div class="ql1 ql">
-          <a href="" class="footer-link fl1">link1</a>
-          <a href="" class="footer-link">link2</a>
-        </ul>
-      </div>
-      <div class="ql2 ql">
-        <a href="" class="footer-link fl1">link3</a>
-        <a href="" class="footer-link">link4</a>
-      </div>
+        <a href="#" class="footer-link fl1">About Us</a>
+        <a href="#" class="footer-link">Tools</a>
+      </ul>
+    </div>
+    <div class="ql2 ql">
+      <a href="#" class="footer-link fl1">News</a>
+      <a href="#" class="footer-link">Resources</a>
+    </div>
       <div class="email-input">
         <input type="email" name="newsletter" id="newsletter" />
       </div>
@@ -332,6 +334,10 @@
         <p>©2022 RyoEX Inc. / All rights reserved</p>
       </div>
     </footer>
+  </div>
+
+  <script src="./js/classes.js"></script>
+  <script src="./js/main.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
