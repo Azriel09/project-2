@@ -4,14 +4,22 @@ let converter = new Currency();
 const loader = document.querySelector("#loading");
 const subCon = document.querySelector(".sub-container");
 
-function displayLoading() {
-  loader.classList.add("display");
-  subCon.classList.remove("display");
+var firstRun = true;
 
-  setTimeout(() => {
-    loader.classList.remove("display");
-    subCon.classList.add("display");
-  }, 500);
+function displayLoading() {
+  if (firstRun) {
+    loader.classList.add("display");
+    subCon.classList.remove("display");
+
+    setTimeout(() => {
+      loader.classList.remove("display");
+      subCon.classList.add("display");
+    }, 500);
+  } else {
+    return null;
+  }
+
+  firstRun = false;
 }
 
 function hideLoading() {
@@ -118,8 +126,10 @@ function timeSeriesChart(
           type: "date",
         },
         yaxis: {
+          autosize: false,
           autorange: true,
           range: [0, 100],
+          automargin: false,
           type: "linear",
         },
       };
