@@ -57,7 +57,7 @@ nav {
 /* MAIN */
 .main {
   width: 100%;
-  margin-top: 15vh;
+  margin-top: 5vh;
 }
 
 @media (max-width: 754px) {
@@ -77,6 +77,7 @@ input[type="radio"] {
 }
 
 .intro-top {
+  margin-top: 5vh;
   font-size: 2.5em;
   font-weight: 600;
 }
@@ -244,6 +245,7 @@ label:hover {
 
 @media (max-width: 560px) {
   .intro-top {
+    margin-top: 0;
     font-size: 1.8em;
   }
 
@@ -455,6 +457,22 @@ label:hover {
 }
 
 /* Footer */
+.fa-brands {
+  color: white;
+  margin: 0 5px;
+}
+
+.fa-solid {
+  color: white;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.fa-solid:hover {
+  color: blue;
+  cursor: pointer;
+}
+
 footer {
   font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(21, 21, 123);
@@ -485,7 +503,7 @@ footer {
 }
 
 .subscribe {
-  text-align: end;
+  text-align: start;
   grid-area: subs;
   color: white;
 }
@@ -510,9 +528,13 @@ footer {
 
 .email-input {
   grid-area: email;
+  display: flex;
+  flex-direction: row;
 }
 
 .socials {
+  margin-left: auto;
+  margin-right: auto;
   grid-area: socials;
   color: white;
 }
@@ -547,6 +569,10 @@ footer {
 
 .footer-link {
   color: white;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-decoration: none;
 }
 
 .sitename-logo {
@@ -562,8 +588,12 @@ footer {
 }
 
 #newsletter {
-  padding: 10px 50px;
+  min-height: 40px;
+  padding: 1px 20px;
   border-radius: 5px;
+  margin-right: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 @media (max-width: 996px) {
@@ -633,7 +663,7 @@ footer {
 
 @media (max-width: 730px) {
   .footer {
-    grid-template-columns: 1fr 4fr 1fr 1fr 2fr 2fr 2fr;
+    grid-template-columns: 2fr 4fr 1fr 1fr 2fr 2fr 2fr;
     grid-template-rows: 1fr 2fr 2fr 1fr 2fr 2fr 1fr 2fr;
     grid-template-areas:
       ". . . . . . ."
@@ -674,6 +704,10 @@ footer {
     margin-right: auto;
   }
 
+  .ql {
+    text-align: center;
+  }
+
   .ql1 {
     grid-area: ql1;
   }
@@ -697,7 +731,7 @@ footer {
 
 @media (max-width: 648px) {
   #newsletter {
-    padding: 5px 30px;
+    padding: 5px 10px;
     border-radius: 5px;
   }
 }
