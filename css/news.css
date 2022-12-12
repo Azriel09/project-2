@@ -5,12 +5,6 @@ font-family: 'Raleway', sans-serif;
 
 */
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 :root {
   --heading: "Montserrat", sans-serif;
 }
@@ -47,20 +41,19 @@ body {
   flex-basis: auto;
 }
 nav {
-  background-color: rgb(21, 21, 123);
+  background-color: rgb() 21, 21, 123;
 }
 
 nav {
   background-color: rgb(21, 21, 123);
 }
 
-.logo-img {
+#nav-logo {
   width: 50%;
   height: 50%;
 }
 
 /* Global */
-
 img {
   width: 100%;
 }
@@ -79,9 +72,16 @@ hr {
   margin: 0 auto;
 }
 
-/* Maim */
-main {
+.god-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main */
+.main-container-left,
+.main-container-right {
   margin-top: 5vh;
+  margin-left: 20px;
 }
 
 /* Main container left */
@@ -113,52 +113,7 @@ main {
   padding: 15px 30px;
 }
 
-.container-bottom-left {
-  background: #f3f3f3;
-  margin: 15px 30px;
-}
-
 /* Bottom left container */
-#bottom-left .bottom-left-articles {
-  height: 20vh;
-  width: 40vw;
-  display: grid;
-  grid-template-columns: 4fr fr 4fr;
-  grid-template-rows: 5fr 3fr 1fr 1fr;
-  grid-area: "img1 . img2" "h1 . h2" "d1 . d2" "a1 . a2";
-}
-
-.img1 {
-  grid-area: img1;
-}
-
-.img2 {
-  grid-area: img2;
-}
-
-.h1 {
-  grid-area: h1;
-}
-
-.h2 {
-  grid-area: h2;
-}
-
-.d1 {
-  grid-area: d1;
-}
-
-.d2 {
-  grid-area: d2;
-}
-
-.rm1 {
-  grid-area: a1;
-}
-
-.rm2 {
-  grid-area: a2;
-}
 
 .news-btm-left-img {
   width: 400px;
@@ -166,14 +121,30 @@ main {
   object-fit: fill;
 }
 
+.container-bottom-left {
+  margin: 15px 15px;
+}
+
+.container-bottom-left article {
+  margin: 20px;
+}
+
+.bottom-left h3 {
+  min-height: 100px;
+}
+
+.bottom-left p {
+  min-height: 75px;
+}
+
 /*** Main container right */
 
 .main-container-right {
-  padding: 30px 10px;
+  padding: 0 10px;
 }
 
 .main-container-right > h2 {
-  padding: 15px 0 15px 30px;
+  padding: 0px 0 15px 30px;
 }
 
 .main-container-right article {
@@ -249,6 +220,20 @@ main {
   }
 }
 
+@media (max-width: 930px) {
+  .news-btm-left-img {
+    width: 350px;
+    height: 175px;
+  }
+}
+
+@media (max-width: 485px) {
+  .news-btm-left-img {
+    width: 300px;
+    height: 150px;
+  }
+}
+
 @media (min-width: 768px) {
   .container-bottom-left {
     display: grid;
@@ -256,7 +241,13 @@ main {
   }
 }
 
-@media (min-width: 992px) {
+@media (max-width: 440px) {
+  .container-bottom-left article {
+    margin: 5px;
+  }
+}
+
+@media (min-width: 1350px) {
   main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

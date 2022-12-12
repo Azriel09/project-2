@@ -1,0 +1,45 @@
+body {
+  background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%),
+    url("../assets/img/about-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.god-container {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin: 15vh 5vh 10vh;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.about-square {
+  text-align: center;
+  border: 20px solid #2279dc;
+  width: 400px;
+  height: 400px;
+  font-size: 1.5em;
+  color: white;
+}
+
+.about-square h2 {
+  font-weight: bold;
+  margin: 20px 0 40px;
+}
+
+.about-square p {
+  padding: 0 10px 10px;
+}
+
+.about-p p {
+  display: flex;
+  align-items: center;
+  width: 700px;
+  height: 400px;
+  font-size: 1.5em;
+  color: white;
+}
