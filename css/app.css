@@ -322,7 +322,8 @@ label:hover {
 }
 
 .value-here {
-  padding-top: 20px;
+  margin-top: 10px;
+  height: 50px;
   font-size: 2em;
 }
 
@@ -518,6 +519,10 @@ footer {
   color: white;
 }
 
+.ql {
+  text-align: center;
+}
+
 .ql1 {
   grid-area: links1;
 }
@@ -663,6 +668,7 @@ footer {
 
 @media (max-width: 730px) {
   .footer {
+    height: 60vh;
     grid-template-columns: 2fr 4fr 1fr 1fr 2fr 2fr 2fr;
     grid-template-rows: 1fr 2fr 2fr 1fr 2fr 2fr 1fr 2fr;
     grid-template-areas:
@@ -670,7 +676,7 @@ footer {
       ". logo . . subs subs ."
       ". cc . . em em ."
       ". . . . . . ."
-      ". sc . . ql1 ql2 ."
+      ". sc . ql1 . ql2 ."
       ". . . . . . ."
       ". sn . . cr cr ."
       ". . . . . . .";
@@ -736,7 +742,7 @@ footer {
   }
 }
 
-@media (max-width: 585px) {
+@media (max-width: 630px) {
   #newsletter {
     padding: 5px 30px;
     border-radius: 5px;

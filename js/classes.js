@@ -22,7 +22,7 @@ class Currency {
     const data = convertFunction();
 
     data.then((currencyValues) => {
-      let value = currencyValues["result"];
+      let value = currencyValues["result"].toLocaleString();
       let currency = currencyValues["query"]["to"];
       if (isNaN(amount)) {
         $("div.value-here").html(`Invalid amount input`);
@@ -49,7 +49,7 @@ class Currency {
       for (var [key, value] of Object.entries(rates)) {
         for (let i = 0; i < this.popularCurrencies.length; i++) {
           if (key == this.popularCurrencies[i]) {
-            $(`#rate${placer}`).html(`${key} ${value}`);
+            $(`#rate${placer}`).html(`${key} ${value.toLocaleString()}`);
             placer++;
           }
         }
@@ -77,11 +77,10 @@ class Currency {
       for (let i = 0; i < this.table2.length; i++) {
         let finalValue = value * this.table2[i];
         $(`#t2rate${this.table2[i]}`).html(`${base} ${this.table2[i]}`);
-        td[i].innerHTML = `${
+        td[i].innerHTML = `${(
           Math.round((finalValue + Number.EPSILON) * 100) / 100
-        } ${currency}`;
+        ).toLocaleString()} ${currency}`;
       }
     });
   }
 }
-
