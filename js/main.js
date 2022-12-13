@@ -14,7 +14,7 @@ function displayLoading() {
     setTimeout(() => {
       loader.classList.remove("display");
       subCon.classList.add("display");
-    }, 500);
+    }, 1000);
   } else {
     return null;
   }
@@ -222,7 +222,7 @@ function createTimeSeriesChart() {
     twoYearStart
   );
 }
-
+var gg = 1;
 function onLoad() {
   // GETTING FROM API ALL COUNTRIES' SYMBOLS (Ex: USD, PHP, etc)
   displayLoading();
@@ -238,7 +238,8 @@ function onLoad() {
     // Making multiple currency options
     for (var [key, value] of Object.entries(response["symbols"])) {
       var description = value["description"];
-
+      console.log(key, description, gg);
+      gg++;
       var baseContainer1 = document.getElementById("base-currency");
       var baseContainer2 = document.getElementById("base-currency1");
       var baseContainer3 = document.getElementById("base-currency2");
