@@ -1,0 +1,4 @@
+runtime: nodejs10
+
+env_variables:
+  DB_URL: "mongodb+srv://Myahjzxc:AoXui6yEVh9WAn@cluster0.9vkvyl5.mongodb.net/ryoex?retryWrites=true&w=majority"
